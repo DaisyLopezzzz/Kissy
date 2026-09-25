@@ -29,20 +29,21 @@
             z-index: 1;
         }
 
-        /* PROFILE PHOTO CIRCLE */
+        /* PROFILE PHOTO IN RED CIRCLE */
         .avatar {
             position: fixed;
-            top: 28%;
+            top: 20%;
             left: 50%;
             transform: translateX(-50%);
-            width: 180px;
-            height: 180px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             object-fit: cover;
-            z-index: 40;
-            border: 5px solid rgba(255,255,255,0.8);
-            box-shadow: 0 0 25px rgba(255,105,170,0.5);
-            background: #111;
+            object-position: center;
+            z-index: 30;
+            border: 8px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 25px rgba(255, 40, 40, 0.4);
+            background: #ff1b15;
         }
 
         /* BLOSSOMS */
@@ -145,14 +146,14 @@
         alt=""
     >
 
-    <!-- PROFILE PHOTO -->
+    <!-- PROFILE PHOTO IN RED CIRCLE -->
     <img
         class="avatar"
         src="avatar.png"
         alt="Kissy profile picture"
     >
 
-    <!-- ANIMATION (PETALS ONLY - NO RAIN) -->
+    <!-- ANIMATION (PETALS ONLY) -->
     <div class="petals"></div>
 
     <!-- LINKS -->
