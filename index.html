@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -29,19 +29,17 @@
             z-index: 1;
         }
 
-        /* PROFILE PHOTO IN CIRCLE */
+        /* AVATAR PHOTO */
         .avatar {
             position: fixed;
-            top: 20%;
+            top: 15%;
             left: 50%;
             transform: translateX(-50%);
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            object-position: center;
             z-index: 30;
-            border: none;
         }
 
         /* BLOSSOMS */
@@ -68,7 +66,6 @@
             from {
                 transform: translateY(-40px) rotate(0deg);
             }
-
             to {
                 transform: translateY(110vh) rotate(360deg);
             }
@@ -78,7 +75,6 @@
             from {
                 margin-left: -25px;
             }
-
             to {
                 margin-left: 25px;
             }
@@ -97,29 +93,18 @@
         }
 
         @keyframes catWalk {
-            0% {
-                left: -45px;
-            }
-
-            42% {
-                left: 42%;
-            }
-
-            48% {
-                left: 42%;
-            }
-
-            100% {
-                left: 105%;
-            }
+            0% { left: -45px; }
+            42% { left: 42%; }
+            48% { left: 42%; }
+            100% { left: 105%; }
         }
 
-        /* CLICKABLE LINK BOXES WITH TEXT */
+        /* LINK BOXES */
         .link-box {
             position: fixed;
-            left: 67%;
-            width: 20%;
-            height: 5.5%;
+            left: 68%;
+            width: 16%;
+            padding: 12px 20px;
             z-index: 50;
             display: flex;
             align-items: center;
@@ -127,51 +112,37 @@
             text-decoration: none;
             cursor: pointer;
             font-family: 'Great Vibes', cursive;
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-            border: 2px solid rgba(255, 105, 170, 0.6);
-            border-radius: 25px;
-            background: transparent;
+            font-size: 18px;
+            color: rgba(255, 105, 170, 0.9);
+            border: 2px solid rgba(255, 105, 170, 0.7);
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
 
         .link-box:hover {
             color: rgba(255, 105, 170, 1);
             border-color: rgba(255, 105, 170, 1);
-            box-shadow: 0 0 15px rgba(255, 105, 170, 0.5);
-            text-shadow: 0 0 10px rgba(255, 105, 170, 0.5);
+            box-shadow: 0 0 15px rgba(255, 105, 170, 0.6);
         }
 
-        .instagram { top: 47%; }
-        .tiktok { top: 53%; }
-        .onlyfans { top: 59%; }
-        .twitter { top: 65%; }
-        .spotify { top: 71%; }
-        .amazon { top: 77%; }
+        .instagram { top: 48%; }
+        .tiktok { top: 54%; }
+        .onlyfans { top: 60%; }
+        .twitter { top: 66%; }
+        .spotify { top: 72%; }
+        .amazon { top: 78%; }
     </style>
 </head>
 
 <body>
 
-    <!-- BACKGROUND IMAGE -->
-    <img
-        class="picture"
-        src="background.png"
-        alt=""
-    >
-
-    <!-- PROFILE PHOTO -->
-    <img
-        class="avatar"
-        src="avatar.png"
-        alt="Kissy"
-    >
-
-    <!-- ANIMATION (PETALS ONLY) -->
+    <img class="picture" src="background.png" alt="">
+    
+    <img class="avatar" src="avatar.png" alt="Kissy">
+    
     <div class="petals"></div>
 
-    <!-- LINK BOXES WITH CURSIVE TEXT -->
     <a class="link-box instagram" href="https://www.instagram.com/v_21111_/" target="_blank">instagram</a>
     <a class="link-box tiktok" href="https://www.tiktok.com/@hbun1149icv" target="_blank">tiktok</a>
     <a class="link-box onlyfans" href="https://onlyfans.com/u562981014" target="_blank">onlyfans</a>
@@ -179,21 +150,17 @@
     <a class="link-box spotify" href="https://open.spotify.com/user/j16j8fz7boegw1y3h2gizr7p4?si=OJNaoN7fSNmLELFGLrQRKQ&utm_source=copy-link" target="_blank">spotify</a>
     <a class="link-box amazon" href="https://www.amazon.com/hz/wishlist/ls/20PAZF3BQP686?ref_=wl_share" target="_blank">amazon wishlist</a>
 
-    <!-- LITTLE BLACK CAT -->
     <div class="cat">🐈‍⬛</div>
 
     <script>
         const petals = document.querySelector(".petals");
-
         for (let i = 0; i < 22; i++) {
             const petal = document.createElement("div");
             petal.className = "petal";
-
             petal.style.left = Math.random() * 100 + "%";
             petal.style.top = Math.random() * -100 + "px";
             petal.style.animationDuration = (7 + Math.random() * 7) + "s";
             petal.style.animationDelay = Math.random() * 8 + "s";
-
             petals.appendChild(petal);
         }
     </script>
