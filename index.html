@@ -1,281 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #000;
-}
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
 
-.picture {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 1;
-}
+        .picture {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+        }
 
-/* GENTLE RAIN */
+        /* PROFILE PHOTO CIRCLE */
+        .avatar {
+            position: fixed;
+            top: 18%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 40;
+            border: 4px solid rgba(255,255,255,0.75);
+            box-shadow: 0 0 18px rgba(255,255,255,0.35);
+            background: #111;
+        }
 
-.rain {
-    position: fixed;
-    inset: -100px;
-    pointer-events: none;
-    z-index: 10;
-    opacity: 0.35;
+        /* GENTLE RAIN */
+        .rain {
+            position: fixed;
+            inset: -100px;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.35;
 
-    background-image:
-        repeating-linear-gradient(
-            105deg,
-            transparent 0px,
-            transparent 9px,
-            rgba(220,190,255,0.22) 10px,
-            rgba(220,190,255,0.22) 11px,
-            transparent 12px,
-            transparent 25px
-        );
+            background-image:
+                repeating-linear-gradient(
+                    105deg,
+                    transparent 0px,
+                    transparent 9px,
+                    rgba(220,190,255,0.22) 10px,
+                    rgba(220,190,255,0.22) 11px,
+                    transparent 12px,
+                    transparent 25px
+                );
 
-    background-size: 45px 65px;
+            background-size: 45px 65px;
+            animation: rain 1.8s linear infinite;
+        }
 
-    animation: rain 1.8s linear infinite;
-}
+        @keyframes rain {
+            from {
+                background-position: 0 0;
+            }
 
-@keyframes rain {
-    from {
-        background-position: 0 0;
-    }
+            to {
+                background-position: -45px 65px;
+            }
+        }
 
-    to {
-        background-position: -45px 65px;
-    }
-}
+        /* BLOSSOMS */
+        .petals {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 20;
+        }
 
-/* BLOSSOMS */
+        .petal {
+            position: absolute;
+            width: 10px;
+            height: 7px;
+            border-radius: 70% 30% 70% 30%;
+            background: rgba(255,105,170,0.72);
 
-.petals {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 20;
-}
+            animation:
+                fall linear infinite,
+                sway ease-in-out infinite alternate;
+        }
 
-.petal {
-    position: absolute;
-    width: 10px;
-    height: 7px;
-    border-radius: 70% 30% 70% 30%;
-    background: rgba(255,105,170,0.72);
+        @keyframes fall {
+            from {
+                transform: translateY(-40px) rotate(0deg);
+            }
 
-    animation:
-        fall linear infinite,
-        sway ease-in-out infinite alternate;
-}
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
 
-@keyframes fall {
-    from {
-        transform: translateY(-40px) rotate(0deg);
-    }
+        @keyframes sway {
+            from {
+                margin-left: -25px;
+            }
 
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
+            to {
+                margin-left: 25px;
+            }
+        }
 
-@keyframes sway {
-    from {
-        margin-left: -25px;
-    }
+        /* LITTLE BLACK CAT */
+        .cat {
+            position: fixed;
+            bottom: 3px;
+            left: -45px;
+            z-index: 100;
+            font-size: 30px;
+            line-height: 1;
+            pointer-events: none;
+            animation: catWalk 20s linear infinite;
+        }
 
-    to {
-        margin-left: 25px;
-    }
-}
+        @keyframes catWalk {
+            0% {
+                left: -45px;
+            }
 
-/* LITTLE BLACK CAT */
+            42% {
+                left: 42%;
+            }
 
-.cat {
-    position: fixed;
-    bottom: 3px;
-    left: -45px;
-    z-index: 100;
+            48% {
+                left: 42%;
+            }
 
-    font-size: 30px;
-    line-height: 1;
+            100% {
+                left: 105%;
+            }
+        }
 
-    pointer-events: none;
+        /* INVISIBLE CLICKABLE LINK AREAS */
+        .link {
+            position: fixed;
+            left: 67.1%;
+            width: 18%;
+            height: 5%;
+            z-index: 50;
+        }
 
-    animation: catWalk 20s linear infinite;
-}
-
-@keyframes catWalk {
-
-    0% {
-        left: -45px;
-    }
-
-    42% {
-        left: 42%;
-    }
-
-    48% {
-        left: 42%;
-    }
-
-    100% {
-        left: 105%;
-    }
-}
-
-/* INVISIBLE CLICKABLE LINK AREAS */
-
-.link {
-    position: fixed;
-    left: 67.1%;
-    width: 18%;
-    height: 5%;
-    z-index: 50;
-}
-
-.onlyfans {
-    top: 47.2%;
-}
-
-.discord {
-    top: 53.5%;
-}
-
-.pinterest {
-    top: 60%;
-}
-
-.snapchat {
-    top: 66.3%;
-}
-
-.instagram {
-    top: 72.5%;
-}
-
-.x {
-    top: 78.7%;
-}
-
-.spotify {
-    top: 85%;
-}
-
-.tiktok {
-    top: 91.2%;
-}
-</style>
+        .onlyfans { top: 47.2%; }
+        .discord { top: 53.5%; }
+        .pinterest { top: 60%; }
+        .snapchat { top: 66.3%; }
+        .instagram { top: 72.5%; }
+        .x { top: 78.7%; }
+        .spotify { top: 85%; }
+        .tiktok { top: 91.2%; }
+    </style>
 </head>
 
 <body>
 
-<!-- YOUR EXACT PICTURE -->
-<img
-    class="picture"
-    src="background.png"
-    alt=""
->
+    <!-- BACKGROUND IMAGE -->
+    <img
+        class="picture"
+        src="background.png"
+        alt=""
+    >
 
-<!-- ANIMATION -->
-<div class="rain"></div>
-<div class="petals"></div>
+    <!-- PROFILE PHOTO -->
+    <img
+        class="avatar"
+        src="avatar.png"
+        alt="Kissy profile picture"
+    >
 
-<!-- YOUR LINKS -->
+    <!-- ANIMATION -->
+    <div class="rain"></div>
+    <div class="petals"></div>
 
-<a
-    class="link onlyfans"
-    href="https://onlyfans.com/u562981014"
-    target="_blank">
-</a>
+    <!-- LINKS -->
+    <a class="link onlyfans" href="https://onlyfans.com/u562981014" target="_blank"></a>
+    <a class="link discord" href="https://discord.gg/5c5Yyqhcs" target="_blank"></a>
+    <a class="link pinterest" href="https://pin.it/1y1ha3kZD" target="_blank"></a>
+    <a class="link snapchat" href="https://www.snapchat.com/add/b_bunny252227" target="_blank"></a>
+    <a class="link instagram" href="https://www.instagram.com/v_21111_/" target="_blank"></a>
+    <a class="link x" href="https://x.com/IsabellSu68461" target="_blank"></a>
+    <a class="link spotify" href="https://open.spotify.com/user/j16j8fz7boegw1y3h2gizr7p4?si=OJNaoN7fSNmLELFGLrQRKQ&utm_source=copy-link" target="_blank"></a>
+    <a class="link tiktok" href="https://www.tiktok.com/@hbun1149icv" target="_blank"></a>
 
-<a
-    class="link discord"
-    href="https://discord.gg/5c5Yyqhcs"
-    target="_blank">
-</a>
+    <!-- LITTLE BLACK CAT -->
+    <div class="cat">🐈‍⬛</div>
 
-<a
-    class="link pinterest"
-    href="https://pin.it/1y1ha3kZD"
-    target="_blank">
-</a>
+    <script>
+        const petals = document.querySelector(".petals");
 
-<a
-    class="link snapchat"
-    href="https://www.snapchat.com/add/b_bunny252227"
-    target="_blank">
-</a>
+        for (let i = 0; i < 22; i++) {
+            const petal = document.createElement("div");
+            petal.className = "petal";
 
-<a
-    class="link instagram"
-    href="https://www.instagram.com/v_21111_/"
-    target="_blank">
-</a>
+            petal.style.left = Math.random() * 100 + "%";
+            petal.style.top = Math.random() * -100 + "px";
+            petal.style.animationDuration = (7 + Math.random() * 7) + "s";
+            petal.style.animationDelay = Math.random() * 8 + "s";
 
-<a
-    class="link x"
-    href="https://x.com/IsabellSu68461"
-    target="_blank">
-</a>
-
-<a
-    class="link spotify"
-    href="https://open.spotify.com/user/j16j8fz7boegw1y3h2gizr7p4?si=OJNaoN7fSNmLELFGLrQRKQ&utm_source=copy-link"
-    target="_blank">
-</a>
-
-<a
-    class="link tiktok"
-    href="https://www.tiktok.com/@hbun1149icv"
-    target="_blank">
-</a>
-
-<!-- LITTLE BLACK CAT -->
-
-<div class="cat">🐈‍⬛</div>
-
-<script>
-
-const petals = document.querySelector(".petals");
-
-for (let i = 0; i < 22; i++) {
-
-    const petal = document.createElement("div");
-
-    petal.className = "petal";
-
-    petal.style.left =
-        Math.random() * 100 + "%";
-
-    petal.style.top =
-        Math.random() * -100 + "px";
-
-    petal.style.animationDuration =
-        (7 + Math.random() * 7) + "s";
-
-    petal.style.animationDelay =
-        Math.random() * 8 + "s";
-
-    petals.appendChild(petal);
-}
-
-</script>
+            petals.appendChild(petal);
+        }
+    </script>
 
 </body>
 </html>
